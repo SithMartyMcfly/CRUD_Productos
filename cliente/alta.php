@@ -19,7 +19,11 @@ include '../header.php';
 
                     </div>
                     <form action="registrar.php" class="p-4" method="POST" enctype="multipart/form-data">
+                        <!--el id es autoincremental en la bbdd pero 
+                        si quieres ponerlo a mano solo tienes que 
+                        descomentar el siguiente div-->
                         <!--<div class="mb-3">
+
                             <label for="" class="form-label">Identificador</label>
                             <input type="number"class="form-control" name="identificador" id="identificador" autofocus required/>     
                         </div>-->

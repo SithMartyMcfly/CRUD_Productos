@@ -3,7 +3,7 @@ include '../header.php';
 include '../conexion/conexion.php';
 
 mysqli_select_db($conexion, 'productosbd');
-
+//recibo el id que voy a actualizar
 $productoActualizar = $_GET['id'];
 
 $selecionar = "
@@ -35,6 +35,8 @@ $selecionar = "
                         Ingresar datos:
 
                     </div>
+                    <!--paso los datos de id, y la imagen por el 
+                    formulario para recuperarlos posteriormente-->
                     <form action="actualizacion3.php?idmodifica=<?php echo $productoActualizar; ?>&nombreimagen=<?php echo $registro[4]; ?>" class="p-4" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="" class="form-label">Identificador</label>

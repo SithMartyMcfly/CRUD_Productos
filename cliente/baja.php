@@ -56,6 +56,7 @@ include '../header.php';
                                     <td><?php echo $registro[2];?></td>
                                     <td><?php echo $registro[3];?></td>
                                     <td><?php echo '<img width ="100px" height "100px" src="../imagenes/'.$registro[4].'">';?></td>
+                                <!--pasamos por la url la id del producto que vamos a borrar-->
                                     <td><a href="baja2.php?id=<?php echo $registro[0]; ?>"><i class="bi-trash px-1" style="font-size: 2rem; color:red;"> </i></a></td>
                                 </tr>
                                 <?php

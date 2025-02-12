@@ -3,21 +3,18 @@ include '../conexion/conexion.php';
 ?>
 
 <?php
-
+    //recibo los datos que he pasado, para recuperar los datos antiguos
     $idmodificar= $_GET['idmodifica'];
     $imagenAntigua = $_GET['nombreimagen'];
 
     mysqli_select_db($conexion, "productosbd");
 
-    //var_dump($_POST);
     $id = $_POST['identificador'];
     $name = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
     $precio = $_POST['precio'];
 
 
-    //var_dump($_FILES['imagen']);
-    //revisar donde se sube el archivo
     $directorioSubida = "imagenes/";
     $max_file_size ="5210000";
     $extensionesValidas = array ("jpg", "png", "gif");
@@ -45,7 +42,6 @@ include '../conexion/conexion.php';
             $nombreCompleto = $directorioSubida.$nombreArchivo;
             move_uploaded_file($directorioTemp, $nombreCompleto);
         }
-        //revisar donde se sube el archivo
     }
 
     if  ($_FILES['imagen']['name']!=""){
