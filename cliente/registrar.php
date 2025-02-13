@@ -5,12 +5,43 @@ include '../conexion/conexion.php';
 
     mysqli_select_db($conexion, "productosbd");
 
-    //var_dump($_POST);
-    //$id = $_POST['identificador'];
+    //hacemos una consulta de todos los IDS
+    $consultaIds = "SELECT id
+                    FROM productos
+                    ORDER BY id ASC";
+    //recogemos la consulta
+    $resultadoConsultasIds = mysqli_query($conexion, $consultaIds);
+    //capturamos en un array todos los ids de la consulta
+    while($datos= mysqli_fetch_array($resultadoConsultasIds)){
+        $idExistentes [] = intval($datos['id']);
+    }
+    //iniciamos en el valor mínimo que queremos darle al ID
+    $id = 1;
+    //le decimos que busque dentro del array si existe la id mínima,
+    //en caso de existir le sumamos uno para que busque el siguiente
+    while (in_array($id, $idExistentes)){
+        $id++;
+    }
+
+
+    //quedan huecos por detrás si borramos un producto con id intermedio
+   /* $consultaIdMax = "SELECT Max(id)
+            FROM productos";
+    
+    $idMaxResult = mysqli_query($conexion, $consultaIdMax);
+    
+    $id = 1;
+    while ($dato = mysqli_fetch_row($idMaxResult)){
+        $idMax = $dato[0];
+        $id = intval($idMax)+1;
+    }*/
+    
+    
+    
+    
     $name = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
     $precio = $_POST['precio'];
-    $identificadores = array();
  
 
 
@@ -46,9 +77,9 @@ include '../conexion/conexion.php';
     }
 
     $insertar = "
-    INSERT productos
+    INSERT INTO productos
     (id, nombre, descripcion, precio, imagen)
-    VALUES (id, '$name', '$descripcion', $precio, '$nombreArchivo')";
+    VALUES ($id, '$name', '$descripcion', $precio, '$nombreArchivo')";
 
     mysqli_query($conexion,$insertar);
 

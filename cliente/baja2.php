@@ -12,5 +12,7 @@ $borrar = "
 
 mysqli_query($conexion, $borrar);
 
+
+
 header('Location: ../cliente_estatico/baja_ok.php');
 ?>
